@@ -1,0 +1,19 @@
+{
+  "name": "lvl1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/bin/brain-games.js",	
+  "scripts": {
+    "test": "run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tredoc/frontend-project-lvl1.git"
+  },
+  "author": "tredoc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tredoc/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/tredoc/frontend-project-lvl1#readme"
+}
