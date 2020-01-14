@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import getUserName from '..';
+import { getAnswer } from '..';
 
 console.log('Welcome to the Brain Games!');
 
-const user = getUserName('Mai I have your name? ');
+const user = getAnswer('Mai I have your name? ');
 console.log(`Hello, ${user}!`);
