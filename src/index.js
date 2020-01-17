@@ -6,8 +6,9 @@ export const getAnswer = (x) => readlineSync.question(x);
 export const isWinner = (games, points) => games === points;
 
 const randomNumber = () => Math.floor(Math.random() * 100) + 1;
+const pickRandom = () => Math.floor(Math.random() * 10);
 const isEven = (x) => (x % 2 === 0) ? 'yes' : 'no';
-const getSmallerNum = (a,b) => a >= b ? a : b;
+const getSmallerNum = (a, b) => a >= b ? a : b;
 
 const getPhrase = (a, b) => {
   const num = randomNumber();
@@ -32,7 +33,7 @@ const getGcd = (a, b) => {
   const phrase = `${a} ${b}`;
   let result = 1;
   const smaller = getSmallerNum(a, b);
-  for (let i = 2; i <= smaller; i++) {
+  for (let i = 2; i <= smaller; i += 1) {
     if (a % i === 0 && b % i === 0) {
       result = i;
     }
@@ -53,6 +54,25 @@ export const generateEvenQuestion = () => {
 export const generateCalcQuestion = () => {
   const phrase = getPhrase(randomNumber(), randomNumber());
   return phrase;
+};
+
+export const generateProgressionQuestion = () => {
+  const numQuantity = 10;
+  const start = randomNumber();
+  const position = pickRandom();
+  const progression = pickRandom() + 1;
+  let phrase = [];
+  let result = 0;
+
+  for (let i = 0, j = start; i < numQuantity; i += 1, j += progression) {
+    phrase[i] = j;
+    if (i === position) {
+      phrase[i] = '..';
+      result = j;
+    }
+  }
+  phrase = phrase.join(' ');
+  return [phrase, result];
 };
 
 export const askQuestion = (expression) => {

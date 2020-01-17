@@ -1,7 +1,7 @@
-import { greeting, getUserName, askQuestion, generateCalcQuestion, checkResult, isWinner } from '..';
+import { greeting, getUserName, askQuestion, generateProgressionQuestion, checkResult, isWinner } from '..';
 
-const startCalcGame = () => {
-  greeting('\nWhat is the result of the expression?');
+const startProgressionGame = () => {
+  greeting('\nWhat number is missing in the progression?');
 
   const userName = getUserName();
   console.log(`Hello, ${userName}!`);
@@ -12,7 +12,7 @@ const startCalcGame = () => {
   const failText = `Let's try again, ${userName}!`;
 
   for (let i = 1; i <= gamesCount; i += 1) {
-    const question = generateCalcQuestion();
+    const question = generateProgressionQuestion();
     const expression = question[0];
     const rightAnswer = question[1];
     const userAnswer = askQuestion(expression);
@@ -31,4 +31,4 @@ const startCalcGame = () => {
   }
 };
 
-export default startCalcGame;
+export default startProgressionGame;

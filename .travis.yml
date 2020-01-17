@@ -1,1 +1,3 @@
 language: node_js
+
+scritp: npx eslint ./src
