@@ -1,1 +1,1 @@
-make lint
+language: node_js
