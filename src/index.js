@@ -7,6 +7,8 @@ export const isWinner = (games, points) => games === points;
 
 const randomNumber = () => Math.floor(Math.random() * 100) + 1;
 const isEven = (x) => (x % 2 === 0) ? 'yes' : 'no';
+const getSmallerNum = (a,b) => a >= b ? a : b;
+
 const getPhrase = (a, b) => {
   const num = randomNumber();
   let phrase = '';
@@ -24,6 +26,23 @@ const getPhrase = (a, b) => {
     result = a * b;
   }
   return [phrase, result];
+};
+
+const getGcd = (a, b) => {
+  const phrase = `${a} ${b}`;
+  let result = 1;
+  const smaller = getSmallerNum(a, b);
+  for (let i = 2; i <= smaller; i++) {
+    if (a % i === 0 && b % i === 0) {
+      result = i;
+    }
+  }
+  return [phrase, result];
+};
+
+export const generateGcdQuestion = () => {
+  const gcd = getGcd(randomNumber(), randomNumber());
+  return gcd;
 };
 
 export const generateEvenQuestion = () => {

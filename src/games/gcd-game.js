@@ -1,7 +1,7 @@
-import { greeting, getUserName, askQuestion, generateCalcQuestion, checkResult, isWinner } from '..';
+import { greeting, getUserName, askQuestion, generateGcdQuestion, checkResult, isWinner } from '..';
 
-const startCalcGame = () => {
-  greeting('\nWhat is the result of the expression?');
+const startGcdGame = () => {
+  greeting('\nFind the greatest common divisor of given numbers.');
 
   const userName = getUserName();
   console.log(`Hello, ${userName}!`);
@@ -12,12 +12,12 @@ const startCalcGame = () => {
   const failText = `Let's try again, ${userName}!`;
 
   for (let i = 1; i <= gamesCount; i += 1) {
-    const question = generateCalcQuestion();
+    const question = generateGcdQuestion();
     const expression = question[0];
     const rightAnswer = question[1];
     const userAnswer = askQuestion(expression);
     const isWinRound = checkResult(userAnswer, rightAnswer);
-    
+
     if (isWinRound) {
       points += 1;
     } else {
@@ -31,4 +31,4 @@ const startCalcGame = () => {
   }
 };
 
-export default startCalcGame;
+export default startGcdGame;
