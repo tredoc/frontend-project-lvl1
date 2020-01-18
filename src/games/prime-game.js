@@ -3,7 +3,7 @@ import {
 } from '..';
 
 const startPrimeGame = () => {
-  greeting('\nAnswer "yes" if given number is prime. Oherwise answer "no".');
+  greeting('\nAnswer "yes" if given number is prime. Otherwise answer "no".');
 
   const userName = getUserName();
   console.log(`Hello, ${userName}!`);
