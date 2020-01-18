@@ -1,3 +1,7 @@
 language: node_js
 
-scritp: npx eslint ./src
+node_js: 
+   - node
+
+script:
+   - make lint

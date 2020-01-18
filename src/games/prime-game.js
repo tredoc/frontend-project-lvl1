@@ -1,9 +1,9 @@
 import {
-  greeting, getUserName, generateEvenQuestion, askQuestion, checkResult, isWinner,
+  greeting, getUserName, askQuestion, generateIsPrimeQuestion, checkResult, isWinner,
 } from '..';
 
-const startEvenGame = () => {
-  greeting('\nAnswer "yes" if the number is even, otherwise answer "no".');
+const startPrimeGame = () => {
+  greeting('\nAnswer "yes" if given number is prime. Oherwise answer "no".');
 
   const userName = getUserName();
   console.log(`Hello, ${userName}!`);
@@ -14,7 +14,7 @@ const startEvenGame = () => {
   const failText = `Let's try again, ${userName}!`;
 
   for (let i = 1; i <= gamesCount; i += 1) {
-    const question = generateEvenQuestion();
+    const question = generateIsPrimeQuestion();
     const expression = question[0];
     const rightAnswer = question[1];
     const userAnswer = askQuestion(expression);
@@ -33,4 +33,4 @@ const startEvenGame = () => {
   }
 };
 
-export default startEvenGame;
+export default startPrimeGame;

@@ -1,4 +1,6 @@
-import { greeting, getUserName, askQuestion, generateProgressionQuestion, checkResult, isWinner } from '..';
+import {
+  greeting, getUserName, askQuestion, generateProgressionQuestion, checkResult, isWinner,
+} from '..';
 
 const startProgressionGame = () => {
   greeting('\nWhat number is missing in the progression?');

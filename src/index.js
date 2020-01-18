@@ -7,19 +7,41 @@ export const isWinner = (games, points) => games === points;
 
 const randomNumber = () => Math.floor(Math.random() * 100) + 1;
 const pickRandom = () => Math.floor(Math.random() * 10);
-const isEven = (x) => (x % 2 === 0) ? 'yes' : 'no';
-const getSmallerNum = (a, b) => a >= b ? a : b;
+const isEven = (x) => {
+  if (x % 2 === 0) {
+    return 'yes';
+  }
+  return 'no';
+};
+
+const getSmallerNum = (a, b) => {
+  if (a >= b) {
+    return a;
+  }
+  return b;
+};
+
+const isPrime = (x) => {
+  if (x > 1) {
+    for (let i = 2; i < x; i += 1) {
+      if (x % i === 0) {
+        return 'no';
+      }
+    }
+  }
+  return 'yes';
+};
 
 const getPhrase = (a, b) => {
-  const num = randomNumber();
+  const num = Math.floor(Math.random() * 3) + 1;
   let phrase = '';
   let result = 0;
 
-  if (num < 33) {
+  if (num === 1) {
     phrase = `${a} + ${b}`;
     result = a + b;
   }
-  if (num > 33 && num < 66) {
+  if (num === 2) {
     phrase = `${a} - ${b}`;
     result = a - b;
   } else {
@@ -39,6 +61,11 @@ const getGcd = (a, b) => {
     }
   }
   return [phrase, result];
+};
+
+export const generateIsPrimeQuestion = () => {
+  const num = randomNumber();
+  return [num, isPrime(num)];
 };
 
 export const generateGcdQuestion = () => {

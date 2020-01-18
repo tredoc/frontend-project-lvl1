@@ -1,4 +1,6 @@
-import { greeting, getUserName, askQuestion, generateGcdQuestion, checkResult, isWinner } from '..';
+import {
+  greeting, getUserName, askQuestion, generateGcdQuestion, checkResult, isWinner,
+} from '..';
 
 const startGcdGame = () => {
   greeting('\nFind the greatest common divisor of given numbers.');

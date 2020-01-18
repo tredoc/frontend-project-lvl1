@@ -1,4 +1,6 @@
-import { greeting, getUserName, askQuestion, generateCalcQuestion, checkResult, isWinner } from '..';
+import {
+  greeting, getUserName, askQuestion, generateCalcQuestion, checkResult, isWinner,
+} from '..';
 
 const startCalcGame = () => {
   greeting('\nWhat is the result of the expression?');
