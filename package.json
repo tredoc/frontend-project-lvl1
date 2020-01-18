@@ -1,7 +1,8 @@
 {
   "name": "lvl1",
   "version": "1.0.0",
-  "description": "",
+  "description": "brain-games project",
+  "keywords": "hexlet, brain-games",
   "main": "src/bin/brain-games.js",
   "bin": {
     "brain-even": "dist/bin/brain-even.js",

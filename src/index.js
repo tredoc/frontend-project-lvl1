@@ -3,7 +3,12 @@ import readlineSync from 'readline-sync';
 export const greeting = (x) => console.log(`Welcome to the Brain Games! ${x}`);
 export const getUserName = () => readlineSync.question('Mai I have your name? ');
 export const getAnswer = (x) => readlineSync.question(x);
-export const isWinner = (games, points) => games === points;
+export const isWinner = (games, points, userName) => {
+  if (games === points) {
+    return console.log(`Congratulations, ${userName}!`);
+  }
+  return null;
+};
 
 const randomNumber = () => Math.floor(Math.random() * 100) + 1;
 const pickRandom = () => Math.floor(Math.random() * 10);
@@ -32,27 +37,27 @@ const isPrime = (x) => {
   return 'yes';
 };
 
-const getPhrase = (a, b) => {
+const getCalcExpression = (a, b) => {
   const num = Math.floor(Math.random() * 3) + 1;
-  let phrase = '';
+  let expression = '';
   let result = 0;
 
   if (num === 1) {
-    phrase = `${a} + ${b}`;
+    expression = `${a} + ${b}`;
     result = a + b;
   }
   if (num === 2) {
-    phrase = `${a} - ${b}`;
+    expression = `${a} - ${b}`;
     result = a - b;
   } else {
-    phrase = `${a} * ${b}`;
+    expression = `${a} * ${b}`;
     result = a * b;
   }
-  return [phrase, result];
+  return [expression, result];
 };
 
-const getGcd = (a, b) => {
-  const phrase = `${a} ${b}`;
+const getGcdExpression = (a, b) => {
+  const expression = `${a} ${b}`;
   let result = 1;
   const smaller = getSmallerNum(a, b);
   for (let i = 2; i <= smaller; i += 1) {
@@ -60,7 +65,7 @@ const getGcd = (a, b) => {
       result = i;
     }
   }
-  return [phrase, result];
+  return [expression, result];
 };
 
 export const generateIsPrimeQuestion = () => {
@@ -69,8 +74,8 @@ export const generateIsPrimeQuestion = () => {
 };
 
 export const generateGcdQuestion = () => {
-  const gcd = getGcd(randomNumber(), randomNumber());
-  return gcd;
+  const expression = getGcdExpression(randomNumber(), randomNumber());
+  return expression;
 };
 
 export const generateEvenQuestion = () => {
@@ -79,8 +84,8 @@ export const generateEvenQuestion = () => {
 };
 
 export const generateCalcQuestion = () => {
-  const phrase = getPhrase(randomNumber(), randomNumber());
-  return phrase;
+  const expression = getCalcExpression(randomNumber(), randomNumber());
+  return expression;
 };
 
 export const generateProgressionQuestion = () => {
@@ -88,18 +93,18 @@ export const generateProgressionQuestion = () => {
   const start = randomNumber();
   const position = pickRandom();
   const progression = pickRandom() + 1;
-  let phrase = [];
+  let expression = [];
   let result = 0;
 
   for (let i = 0, j = start; i < numQuantity; i += 1, j += progression) {
-    phrase[i] = j;
+    expression[i] = j;
     if (i === position) {
-      phrase[i] = '..';
+      expression[i] = '..';
       result = j;
     }
   }
-  phrase = phrase.join(' ');
-  return [phrase, result];
+  expression = expression.join(' ');
+  return [expression, result];
 };
 
 export const askQuestion = (expression) => {
@@ -110,7 +115,7 @@ export const askQuestion = (expression) => {
 
 export const checkResult = (userAnswer, rightAnswer) => {
   let result = Boolean;
-  if (userAnswer == rightAnswer) {
+  if (userAnswer === rightAnswer.toString()) {
     console.log('Correct!');
     result = true;
   } else {

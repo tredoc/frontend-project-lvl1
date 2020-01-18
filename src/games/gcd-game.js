@@ -27,10 +27,7 @@ const startGcdGame = () => {
       break;
     }
   }
-
-  if (isWinner(points, gamesCount)) {
-    return console.log(`Congratulations, ${userName}!`);
-  }
+  return isWinner(points, gamesCount, userName);
 };
 
 export default startGcdGame;
