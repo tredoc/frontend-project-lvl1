@@ -1,9 +1,36 @@
+import { game } from '..';
 import {
-  greeting, getUserName, askQuestion, generateCalcQuestion, checkResult, isWinner,
-} from '..';
+  randomNumber, getUserName, askQuestion, checkResult, isWinner,
+} from '../utils';
+
+const getCalcExpression = (a, b) => {
+  const num = Math.floor(Math.random() * 3) + 1;
+  let expression = '';
+  let result = 0;
+
+  if (num === 1) {
+    expression = `${a} + ${b}`;
+    result = a + b;
+  }
+  if (num === 2) {
+    expression = `${a} - ${b}`;
+    result = a - b;
+  } else {
+    expression = `${a} * ${b}`;
+    result = a * b;
+  }
+  return [expression, result];
+};
+
+const generateCalcQuestion = () => {
+  const expression = getCalcExpression(randomNumber(), randomNumber());
+  return expression;
+};
+
 
 const startCalcGame = () => {
-  greeting('\nWhat is the result of the expression?');
+  console.log('Welcome to the Brain Games!');
+  console.log('What is the result of the expression?');
 
   const userName = getUserName();
   console.log(`Hello, ${userName}!`);

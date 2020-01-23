@@ -1,9 +1,32 @@
+import { game } from '..';
 import {
-  greeting, getUserName, askQuestion, generateProgressionQuestion, checkResult, isWinner,
-} from '..';
+  randomNumber, getUserName, askQuestion, checkResult, isWinner,
+} from '../utils';
+
+const pickRandom = () => Math.floor(Math.random() * 10);
+
+export const generateProgressionQuestion = () => {
+  const numQuantity = 10;
+  const start = randomNumber();
+  const position = pickRandom();
+  const progression = pickRandom() + 1;
+  let expression = [];
+  let result = 0;
+
+  for (let i = 0, j = start; i < numQuantity; i += 1, j += progression) {
+    expression[i] = j;
+    if (i === position) {
+      expression[i] = '..';
+      result = j;
+    }
+  }
+  expression = expression.join(' ');
+  return [expression, result];
+};
 
 const startProgressionGame = () => {
-  greeting('\nWhat number is missing in the progression?');
+  console.log('Welcome to the Brain Games!');
+  console.log('What number is missing in the progression?');
 
   const userName = getUserName();
   console.log(`Hello, ${userName}!`);

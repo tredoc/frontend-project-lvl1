@@ -1,9 +1,27 @@
+import { game } from '..';
 import {
-  greeting, getUserName, askQuestion, generateIsPrimeQuestion, checkResult, isWinner,
-} from '..';
+  randomNumber, getUserName, askQuestion, checkResult, isWinner,
+} from '../utils';
+
+const isPrime = (x) => {
+  if (x > 1) {
+    for (let i = 2; i < x; i += 1) {
+      if (x % i === 0) {
+        return 'no';
+      }
+    }
+  }
+  return 'yes';
+};
+
+const generateIsPrimeQuestion = () => {
+  const num = randomNumber();
+  return [num, isPrime(num)];
+};
 
 const startPrimeGame = () => {
-  greeting('\nAnswer "yes" if given number is prime. Otherwise answer "no".');
+  console.log('Welcome to the Brain Games!');
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
   const userName = getUserName();
   console.log(`Hello, ${userName}!`);

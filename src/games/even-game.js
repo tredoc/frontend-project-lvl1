@@ -1,9 +1,23 @@
+import { game } from '..';
 import {
-  greeting, getUserName, generateEvenQuestion, askQuestion, checkResult, isWinner,
-} from '..';
+  randomNumber, getUserName, askQuestion, checkResult, isWinner,
+} from '../utils';
+
+const isEven = (x) => {
+  if (x % 2 === 0) {
+    return 'yes';
+  }
+  return 'no';
+};
+
+const generateEvenQuestion = () => {
+  const num = randomNumber();
+  return [num, isEven(num)];
+};
 
 const startEvenGame = () => {
-  greeting('\nAnswer "yes" if the number is even, otherwise answer "no".');
+  console.log('Welcome to the Brain Games!');
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
   const userName = getUserName();
   console.log(`Hello, ${userName}!`);
