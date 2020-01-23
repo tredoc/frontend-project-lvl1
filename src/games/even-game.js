@@ -1,47 +1,22 @@
-import { game } from '..';
-import {
-  randomNumber, getUserName, askQuestion, checkResult, isWinner,
-} from '../utils';
+import startGame from '..';
+import randomNumber from '../utils';
 
-const isEven = (x) => {
+const isEvenGameFunc = () => {
+  const x = randomNumber();
+  let result = '';
   if (x % 2 === 0) {
-    return 'yes';
+    result = 'yes';
+  } else {
+    result = 'no';
   }
-  return 'no';
-};
-
-const generateEvenQuestion = () => {
-  const num = randomNumber();
-  return [num, isEven(num)];
+  return [x, result];
 };
 
 const startEvenGame = () => {
-  console.log('Welcome to the Brain Games!');
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
-  const userName = getUserName();
-  console.log(`Hello, ${userName}!`);
-
-  let points = 0;
+  const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
   const gamesCount = 3;
-
-  const failText = `Let's try again, ${userName}!`;
-
-  for (let i = 1; i <= gamesCount; i += 1) {
-    const question = generateEvenQuestion();
-    const expression = question[0];
-    const rightAnswer = question[1];
-    const userAnswer = askQuestion(expression);
-    const isWinRound = checkResult(userAnswer, rightAnswer);
-
-    if (isWinRound) {
-      points += 1;
-    } else {
-      console.log(failText);
-      break;
-    }
-  }
-  return isWinner(points, gamesCount, userName);
+  const gameFunc = isEvenGameFunc;
+  return startGame(gameRules, gamesCount, gameFunc);
 };
 
 export default startEvenGame;
