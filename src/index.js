@@ -1,56 +1,51 @@
 import readlineSync from 'readline-sync';
 
-const getUserName = () => readlineSync.question('Mai I have your name? ');
-const getAnswer = (x) => readlineSync.question(x);
-const isWinner = (games, points, userName) => {
+const isWinner = (games, points) => {
   if (games === points) {
-    return console.log(`Congratulations, ${userName}!`);
+    return true;
   }
-  return null;
+  return false;
 };
 
-const askQuestion = (expression) => {
-  console.log(`Question: ${expression}`);
-  const answer = getAnswer('Your answer: ');
-  return answer;
-};
-
-const checkResult = (userAnswer, rightAnswer) => {
-  let result = Boolean;
+const isWinRound = (userAnswer, rightAnswer) => {
   if (userAnswer === rightAnswer.toString()) {
-    console.log('Correct!');
-    result = true;
-  } else {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-    result = false;
+    return true;
   }
-  return result;
+  return false;
 };
 
-const startGame = (gameRules, gamesCount, gameFunc) => {
+const startGame = (gameRules, gameFunc) => {
   console.log('Welcome to the Brain Games!');
   console.log(gameRules);
 
-  const userName = getUserName();
+  const userName = readlineSync.question('Mai I have your name? ');
   console.log(`Hello, ${userName}!`);
 
+  let result = '';
   let points = 0;
+  const gamesCount = 3;
 
   for (let i = 1; i <= gamesCount; i += 1) {
     const question = gameFunc();
     const expression = question[0];
     const rightAnswer = question[1];
-    const userAnswer = askQuestion(expression);
-    const isWinRound = checkResult(userAnswer, rightAnswer);
 
-    if (isWinRound) {
+    console.log(`Question: ${expression}`);
+    const userAnswer = readlineSync.question('Your answer: ');
+
+    if (isWinRound(userAnswer, rightAnswer)) {
       points += 1;
+      console.log('Correct!');
     } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
       break;
     }
   }
-  return isWinner(points, gamesCount, userName);
+  if (isWinner(points, gamesCount)) {
+    result = `Congratulations, ${userName}!`;
+  }
+  return console.log(result);
 };
 
 export default startGame;

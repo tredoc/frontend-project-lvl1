@@ -1,22 +1,25 @@
 import startGame from '..';
 import randomNumber from '../utils';
 
-const isEvenGameFunc = () => {
-  const x = randomNumber();
-  let result = '';
-  if (x % 2 === 0) {
-    result = 'yes';
-  } else {
-    result = 'no';
+const isEven = (num) => {
+  if (num % 2 === 0) {
+    return true;
   }
-  return [x, result];
+  return false;
 };
 
-const startEvenGame = () => {
-  const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const gamesCount = 3;
-  const gameFunc = isEvenGameFunc;
-  return startGame(gameRules, gamesCount, gameFunc);
+const evenGameFunc = () => {
+  const randomNum = randomNumber(1, 100);
+  let result = 'no';
+  if (isEven(randomNum)) {
+    result = 'yes';
+  }
+  return [randomNum, result];
 };
+
+const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
+const gameFunc = evenGameFunc;
+
+const startEvenGame = () => startGame(gameRules, gameFunc);
 
 export default startEvenGame;

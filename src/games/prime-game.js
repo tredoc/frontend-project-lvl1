@@ -2,23 +2,21 @@ import startGame from '..';
 import randomNumber from '../utils';
 
 const isPrimeGameFunc = () => {
-  const x = randomNumber();
-  let result = 'yes';
-  if (x > 1) {
-    for (let i = 2; i < x; i += 1) {
-      if (x % i === 0) {
-        result = 'no';
+  const num = randomNumber(1, 100);
+  let answer = 'yes';
+  if (num > 1) {
+    for (let i = 2; i < num; i += 1) {
+      if (num % i === 0) {
+        answer = 'no';
       }
     }
   }
-  return [x, result];
+  return [num, answer];
 };
 
-const startPrimeGame = () => {
-  const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const gamesCount = 3;
-  const gameFunc = isPrimeGameFunc;
-  return startGame(gameRules, gamesCount, gameFunc);
-};
+const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const gameFunc = isPrimeGameFunc;
+
+const startPrimeGame = () => startGame(gameRules, gameFunc);
 
 export default startPrimeGame;

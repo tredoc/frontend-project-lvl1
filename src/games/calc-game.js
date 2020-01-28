@@ -1,32 +1,40 @@
 import startGame from '..';
 import randomNumber from '../utils';
 
-const calcGameFunc = () => {
-  const a = randomNumber();
-  const b = randomNumber();
-  const num = Math.floor(Math.random() * 3) + 1;
-  let expression = '';
-  let result = 0;
+const operators = ['+', '-', '*'];
+const getRandomOperator = () => {
+  const num = randomNumber(1, operators.length);
+  const operator = operators[num - 1];
+  return operator;
+};
 
-  if (num === 1) {
-    expression = `${a} + ${b}`;
-    result = a + b;
-  }
-  if (num === 2) {
-    expression = `${a} - ${b}`;
-    result = a - b;
-  } else {
-    expression = `${a} * ${b}`;
-    result = a * b;
+const calcGameFunc = () => {
+  const a = randomNumber(1, 100);
+  const b = randomNumber(1, 100);
+  const operator = getRandomOperator();
+
+  const expression = `${a} ${operator} ${b}`;
+  let result;
+
+  switch (operator) {
+    case '+':
+      result = a + b;
+      break;
+    case '-':
+      result = a - b;
+      break;
+    case '*':
+      result = a * b;
+      break;
+    default:
+      console.log('Unknown operator');
   }
   return [expression, result];
 };
 
-const startCalcGame = () => {
-  const gameRules = 'What is the result of the expression?';
-  const gamesCount = 3;
-  const gameFunc = calcGameFunc;
-  return startGame(gameRules, gamesCount, gameFunc);
-};
+const gameRules = 'What is the result of the expression?';
+const gameFunc = calcGameFunc;
+
+const startCalcGame = () => startGame(gameRules, gameFunc);
 
 export default startCalcGame;

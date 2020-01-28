@@ -2,14 +2,14 @@ import startGame from '..';
 import randomNumber from '../utils';
 
 const progressionGameFunc = () => {
-  const numQuantity = 10;
-  const start = randomNumber();
-  const position = Math.floor(Math.random() * 10);
-  const progression = Math.floor(Math.random() * 10) + 1;
+  const progressionLength = 10;
+  const start = randomNumber(1, 100);
+  const position = randomNumber(1, 9);
+  const progression = randomNumber(1, 10);
   let expression = [];
   let result = 0;
 
-  for (let i = 0, j = start; i < numQuantity; i += 1, j += progression) {
+  for (let i = 0, j = start; i < progressionLength; i += 1, j += progression) {
     expression[i] = j;
     if (i === position) {
       expression[i] = '..';
@@ -20,11 +20,9 @@ const progressionGameFunc = () => {
   return [expression, result];
 };
 
-const startProgressionGame = () => {
-  const gameRules = 'What number is missing in the progression?';
-  const gamesCount = 3;
-  const gameFunc = progressionGameFunc;
-  return startGame(gameRules, gamesCount, gameFunc);
-};
+const gameRules = 'What number is missing in the progression?';
+const gameFunc = progressionGameFunc;
+
+const startProgressionGame = () => startGame(gameRules, gameFunc);
 
 export default startProgressionGame;
