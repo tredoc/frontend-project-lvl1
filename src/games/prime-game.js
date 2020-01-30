@@ -1,22 +1,26 @@
 import startGame from '..';
-import randomNumber from '../utils';
+import getRandomNumber from '../utils';
 
-const isPrimeGameFunc = () => {
-  const num = randomNumber(1, 100);
-  let answer = 'yes';
+const isPrime = (num) => {
   if (num > 1) {
     for (let i = 2; i < num; i += 1) {
       if (num % i === 0) {
-        answer = 'no';
+        return false;
       }
     }
   }
-  return [num, answer];
+  return true;
+};
+
+const generateIsPrimeRoundData = () => {
+  const num = getRandomNumber(1, 100);
+  const answer = isPrime(num) ? 'yes' : 'no';
+
+  return [answer, num];
 };
 
 const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const gameFunc = isPrimeGameFunc;
 
-const startPrimeGame = () => startGame(gameRules, gameFunc);
+const startPrimeGame = () => startGame(gameRules, generateIsPrimeRoundData);
 
 export default startPrimeGame;

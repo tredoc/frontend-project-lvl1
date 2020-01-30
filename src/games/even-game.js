@@ -1,25 +1,16 @@
 import startGame from '..';
-import randomNumber from '../utils';
+import getRandomNumber from '../utils';
 
-const isEven = (num) => {
-  if (num % 2 === 0) {
-    return true;
-  }
-  return false;
-};
+const isEven = (num) => num % 2 === 0;
 
-const evenGameFunc = () => {
-  const randomNum = randomNumber(1, 100);
-  let result = 'no';
-  if (isEven(randomNum)) {
-    result = 'yes';
-  }
+const generateEvenRoundData = () => {
+  const randomNum = getRandomNumber(1, 100);
+  const result = isEven(randomNum) ? 'yes' : 'no';
   return [randomNum, result];
 };
 
 const gameRules = 'Answer "yes" if the number is even, otherwise answer "no".';
-const gameFunc = evenGameFunc;
 
-const startEvenGame = () => startGame(gameRules, gameFunc);
+const startEvenGame = () => startGame(gameRules, generateEvenRoundData);
 
 export default startEvenGame;

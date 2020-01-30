@@ -1,11 +1,11 @@
 import startGame from '..';
-import randomNumber from '../utils';
+import getRandomNumber from '../utils';
 
-const progressionGameFunc = () => {
+const generateProgressionRoundData = () => {
   const progressionLength = 10;
-  const start = randomNumber(1, 100);
-  const position = randomNumber(1, 9);
-  const progression = randomNumber(1, 10);
+  const start = getRandomNumber(1, 100);
+  const position = getRandomNumber(1, 9);
+  const progression = getRandomNumber(1, 10);
   let expression = [];
   let result = 0;
 
@@ -16,13 +16,15 @@ const progressionGameFunc = () => {
       result = j;
     }
   }
+
   expression = expression.join(' ');
+  result = result.toString();
+
   return [expression, result];
 };
 
 const gameRules = 'What number is missing in the progression?';
-const gameFunc = progressionGameFunc;
 
-const startProgressionGame = () => startGame(gameRules, gameFunc);
+const startProgressionGame = () => startGame(gameRules, generateProgressionRoundData);
 
 export default startProgressionGame;

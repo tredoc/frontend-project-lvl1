@@ -1,5 +1,5 @@
 import startGame from '..';
-import randomNumber from '../utils';
+import getRandomNumber from '../utils';
 
 const getGcd = (a, b) => {
   let result = 1;
@@ -13,19 +13,18 @@ const getGcd = (a, b) => {
   return result;
 };
 
-const gcdGameFunc = () => {
-  const a = randomNumber(1, 100);
-  const b = randomNumber(1, 100);
+const generateGcdRoundData = () => {
+  const a = getRandomNumber(1, 100);
+  const b = getRandomNumber(1, 100);
 
   const expression = `${a} ${b}`;
-  const result = getGcd(a, b);
+  const result = getGcd(a, b).toString();
 
   return [expression, result];
 };
 
 const gameRules = 'Find the greatest common divisor of given numbers';
-const gameFunc = gcdGameFunc;
 
-const startGcdGame = () => startGame(gameRules, gameFunc);
+const startGcdGame = () => startGame(gameRules, generateGcdRoundData);
 
 export default startGcdGame;
