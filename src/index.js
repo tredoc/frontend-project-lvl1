@@ -9,7 +9,7 @@ const isWinRound = (userAnswer, rightAnswer) => {
 
 const gamesCount = 3;
 
-const startGame = (gameRules, generateRoundData) => {
+const startGame = (gameRules, genQuestionAndAnswer) => {
   console.log('Welcome to the Brain Games!');
   console.log(gameRules);
 
@@ -17,11 +17,11 @@ const startGame = (gameRules, generateRoundData) => {
   console.log(`Hello, ${userName}!`);
 
   for (let i = 1; i <= gamesCount; i += 1) {
-    const roundData = generateRoundData();
-    const expression = roundData[0];
-    const rightAnswer = roundData[1];
+    const questionAndAnswer = genQuestionAndAnswer();
+    const question = questionAndAnswer[0];
+    const rightAnswer = questionAndAnswer[1];
 
-    console.log(`Question: ${expression}`);
+    console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
     if (isWinRound(userAnswer, rightAnswer)) {

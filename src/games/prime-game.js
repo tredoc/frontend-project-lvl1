@@ -12,7 +12,7 @@ const isPrime = (num) => {
   return true;
 };
 
-const generateIsPrimeRoundData = () => {
+const genQuestionAndAnswer = () => {
   const num = getRandomNumber(1, 100);
   const answer = isPrime(num) ? 'yes' : 'no';
 
@@ -21,6 +21,6 @@ const generateIsPrimeRoundData = () => {
 
 const gameRules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const startPrimeGame = () => startGame(gameRules, generateIsPrimeRoundData);
+const startPrimeGame = () => startGame(gameRules, genQuestionAndAnswer);
 
 export default startPrimeGame;

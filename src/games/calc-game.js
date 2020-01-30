@@ -10,26 +10,19 @@ const getRandomOperator = () => {
 };
 
 const calculateExpression = (a, b, operator) => {
-  let result;
-
   switch (operator) {
     case '+':
-      result = a + b;
-      break;
+      return a + b;
     case '-':
-      result = a - b;
-      break;
+      return a - b;
     case '*':
-      result = a * b;
-      break;
+      return a * b;
     default:
-      console.log('Unknown operator');
+      return console.log('Unknown operator');
   }
-
-  return result;
 };
 
-const generateCalcRoundData = () => {
+const genQuestionAndAnswer = () => {
   const a = getRandomNumber(1, 100);
   const b = getRandomNumber(1, 100);
   const operator = getRandomOperator();
@@ -43,6 +36,6 @@ const generateCalcRoundData = () => {
 
 const gameRules = 'What is the result of the expression?';
 
-const startCalcGame = () => startGame(gameRules, generateCalcRoundData);
+const startCalcGame = () => startGame(gameRules, genQuestionAndAnswer);
 
 export default startCalcGame;

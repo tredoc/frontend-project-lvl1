@@ -1,7 +1,7 @@
 import startGame from '..';
 import getRandomNumber from '../utils';
 
-const generateProgressionRoundData = () => {
+const genQuestionAndAnswer = () => {
   const progressionLength = 10;
   const start = getRandomNumber(1, 100);
   const position = getRandomNumber(1, 9);
@@ -25,6 +25,6 @@ const generateProgressionRoundData = () => {
 
 const gameRules = 'What number is missing in the progression?';
 
-const startProgressionGame = () => startGame(gameRules, generateProgressionRoundData);
+const startProgressionGame = () => startGame(gameRules, genQuestionAndAnswer);
 
 export default startProgressionGame;
