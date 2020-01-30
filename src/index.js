@@ -1,12 +1,5 @@
 import readlineSync from 'readline-sync';
 
-const isWinRound = (userAnswer, rightAnswer) => {
-  if (userAnswer === rightAnswer) {
-    return true;
-  }
-  return false;
-};
-
 const gamesCount = 3;
 
 const startGame = (gameRules, genQuestionAndAnswer) => {
@@ -24,7 +17,7 @@ const startGame = (gameRules, genQuestionAndAnswer) => {
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    if (isWinRound(userAnswer, rightAnswer)) {
+    if (userAnswer === rightAnswer) {
       console.log('Correct!');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
