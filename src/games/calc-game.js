@@ -4,8 +4,8 @@ import getRandomNumber from '../utils';
 const operators = ['+', '-', '*'];
 
 const getRandomOperator = () => {
-  const num = getRandomNumber(1, operators.length);
-  const operator = operators[num - 1];
+  const index = getRandomNumber(1, operators.length - 1);
+  const operator = operators[index];
   return operator;
 };
 
@@ -18,7 +18,7 @@ const calculateExpression = (a, b, operator) => {
     case '*':
       return a * b;
     default:
-      return console.log('Unknown operator');
+      return null;
   }
 };
 
@@ -27,15 +27,14 @@ const genQuestionAndAnswer = () => {
   const b = getRandomNumber(1, 100);
   const operator = getRandomOperator();
 
-  const expression = `${a} ${operator} ${b}`;
-  let result = calculateExpression(a, b, operator);
-  result = result.toString();
+  const question = `${a} ${operator} ${b}`;
+  const answer = calculateExpression(a, b, operator).toString();
 
-  return [expression, result];
+  return [question, answer];
 };
 
-const gameRules = 'What is the result of the expression?';
+const gameDescription = 'What is the result of the expression?';
 
-const startCalcGame = () => startGame(gameRules, genQuestionAndAnswer);
+const startCalcGame = () => startGame(gameDescription, genQuestionAndAnswer);
 
 export default startCalcGame;

@@ -17,14 +17,14 @@ const genQuestionAndAnswer = () => {
   const a = getRandomNumber(1, 100);
   const b = getRandomNumber(1, 100);
 
-  const expression = `${a} ${b}`;
-  const result = getGcd(a, b).toString();
+  const question = `${a} ${b}`;
+  const answer = getGcd(a, b).toString();
 
-  return [expression, result];
+  return [question, answer];
 };
 
-const gameRules = 'Find the greatest common divisor of given numbers';
+const gameDescription = 'Find the greatest common divisor of given numbers';
 
-const startGcdGame = () => startGame(gameRules, genQuestionAndAnswer);
+const startGcdGame = () => startGame(gameDescription, genQuestionAndAnswer);
 
 export default startGcdGame;
