@@ -14,11 +14,10 @@ const isPrime = (num) => {
 };
 
 const genQuestionAndAnswer = () => {
-  let question = getRandomNumber(1, 100);
+  const question = getRandomNumber(1, 100);
   const answer = isPrime(question) ? 'yes' : 'no';
-  question = question.toString;
 
-  return [question, answer];
+  return [question.toString(), answer];
 };
 
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';

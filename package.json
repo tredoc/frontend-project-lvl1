@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "brain-games project",
   "keywords": "hexlet, brain-games",
-  "main": "src/bin/brain-games.js",
+  "main": "",
   "bin": {
     "brain-even": "dist/bin/brain-even.js",
     "brain-calc": "dist/bin/brain-calc.js",
@@ -41,7 +41,6 @@
     "eslint-plugin-import": "^2.20.0"
   },
   "dependencies": {
-    "brain-even": "^0.1.12",
     "readline-sync": "^1.4.10"
   }
 }
