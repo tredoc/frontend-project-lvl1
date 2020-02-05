@@ -11,8 +11,7 @@ const startGame = (gameDescription, genQuestionAndAnswer) => {
 
   for (let i = 1; i <= gamesCount; i += 1) {
     const questionAndAnswer = genQuestionAndAnswer();
-    const question = questionAndAnswer[0];
-    const rightAnswer = questionAndAnswer[1];
+    const [question, rightAnswer] = questionAndAnswer;
 
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
